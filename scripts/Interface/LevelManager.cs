@@ -95,5 +95,8 @@ namespace Assets.IntenseTPS.Scripts.Level
         {
             return 1;
         }
+        public static void LevelSound(Transform _list, LevelSoundType _type) //must
+        {
+        }
     }
 }

@@ -6,12 +6,12 @@ namespace Assets.IntenseTPS.Scripts.Common
 {
     public class CharacterProperty : MonoBehaviour
     {
-        [Range(-1,23)]
+        [Range(0, 2)]
         public int mapIconType = 0;
         public string showName = "Inventory";
         public string inventoryFileName = "null";
         public Avatar avatar;
-        [Range(0.75f, 1.25f)]
+        [Range(0.85f, 1.15f)]
         public float bodySize = 1f;
         [Range(0f,1f)]
         public float upBodySlim = 0f;
