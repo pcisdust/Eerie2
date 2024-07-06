@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using Assets.IntenseTPS.Scripts.Level;
 using Assets.IntenseTPS.Scripts.AI;
-
+using UnityEditor.SceneManagement;
 [CustomEditor(typeof(LevelManagerHelper))]
 public class LevelManagerHelperEditor : Editor
 {
@@ -16,6 +16,7 @@ public class LevelManagerHelperEditor : Editor
             if (_levelLogic)
             {
                 _levelLogic.AutoGet();
+                EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
             }
         }
         serializedObject.ApplyModifiedProperties();

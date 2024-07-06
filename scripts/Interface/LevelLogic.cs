@@ -86,7 +86,36 @@ namespace Assets.IntenseTPS.Scripts.Level
                 if (_ai.Length != 0)
                 {
                     foreach (var _aiItem in _ai)
-                    { aiGenerators.Add(_aiItem); }
+                    {
+                        #region temp
+                        if (_aiItem.plannerStates.Count != 0) 
+                        {
+
+                            for (int n = 0; n < _aiItem.plannerStates.Count; n++) 
+                            {
+                                if (_aiItem.plannerStates[n].patrolRoute) 
+                                {
+                                    _aiItem.plannerStates[n].note = _aiItem.plannerStates[n].patrolRoute.name;
+                                    _aiItem.plannerStates[n].patrolRoutes = new()
+                                    {
+                                        _aiItem.plannerStates[n].patrolRoute
+                                    };
+                                }
+                                if (_aiItem.plannerStates[n].variableCondition.Count > 0)
+                                {
+                                    _aiItem.plannerStates[n].conditionVariable = _aiItem.controlVariable;
+                                }
+                                else
+                                {
+                                    _aiItem.plannerStates[n].conditionVariable = "";
+                                }
+                            }
+                        }
+                        #endregion
+                        aiGenerators.Add(_aiItem);
+                    }
+
+       
                 }
 
                 var _co = _t.GetComponentsInChildren<VariableController>(true);
@@ -131,6 +160,7 @@ namespace Assets.IntenseTPS.Scripts.Level
                     { levelUiElements.Add(_uiItem); }
                 }
             }
+            Debug.Log("auto get ok");
         }
     }
     [Serializable]

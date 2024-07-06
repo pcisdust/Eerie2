@@ -10,7 +10,7 @@ namespace Assets.IntenseTPS.Scripts.AI
     {
         public string note = "state";
         public PatrolRoute patrolRoute=null;
-        public List<string> conditions;
+        public string conditionVariable;
         public List<PatrolRoute> patrolRoutes;
         public List<int> variableCondition;
         public bool needFollowOnePlayer = false;

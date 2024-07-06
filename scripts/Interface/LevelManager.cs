@@ -22,12 +22,12 @@ namespace Assets.IntenseTPS.Scripts.Level
         public static void SetVariable(string _code)//must
         {
 
-        } 
+        }
 
         public static bool SaveGameForNextMap(string targetMap, string targetEntrance) //must
         {
             return true;
-        } 
+        }
 
         public static bool Trigger(Collider collider, ActTrigger _trigger)//must
         {
@@ -48,7 +48,7 @@ namespace Assets.IntenseTPS.Scripts.Level
         { }
 
         public static void BuildItem(ItemBuilder builder, string owner, int player, int[] players)//must
-        {  
+        {
 
         }
 
@@ -57,15 +57,15 @@ namespace Assets.IntenseTPS.Scripts.Level
             return 1;
         }
 
-        public static void AddNpcHandItem(GameObject handitem,int _id,Vector3 _pos, Vector3 _rot, bool onRightHand=true)//must
+        public static void AddNpcHandItem(GameObject handitem, int _id, Vector3 _pos, Vector3 _rot, bool onRightHand = true)//must
         {
         }
 
-        public static void SetConversation(Conversation _conversation,Transform camPosition, int _npc)//must
+        public static void SetConversation(Conversation _conversation, Transform camPosition, int _npc)//must
         {
         }
         public static void CloseConversation(Conversation _conversation) //must;
-        { 
+        {
         }
         public static void RefreshOption(bool[] _can) //must
         {
@@ -74,11 +74,11 @@ namespace Assets.IntenseTPS.Scripts.Level
         {
         }
 
-        public static void StandNpcTalkStart(int _id,bool _start = false) //must
+        public static void StandNpcTalkStart(int _id, bool _start = false) //must
         {
         }
 
-        public static void SelectConversationOption(Conversation.ConversationOption option,string _talkName,int _id) //must
+        public static void SelectConversationOption(Conversation.ConversationOption option, string _talkName, int _id) //must
         {
         }
 
@@ -97,6 +97,10 @@ namespace Assets.IntenseTPS.Scripts.Level
         }
         public static void LevelSound(Transform _list, LevelSoundType _type) //must
         {
+        }
+        public static Material GetCelShadingMat(int _type)
+        {
+            return null;
         }
     }
 }

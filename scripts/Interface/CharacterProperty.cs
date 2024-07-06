@@ -6,7 +6,7 @@ namespace Assets.IntenseTPS.Scripts.Common
 {
     public class CharacterProperty : MonoBehaviour
     {
-        [Range(0, 2)]
+        [Range(0,2)]
         public int mapIconType = 0;
         public string showName = "Inventory";
         public string inventoryFileName = "null";
@@ -19,5 +19,6 @@ namespace Assets.IntenseTPS.Scripts.Common
         public string[] characterPartsTags = new string[] { "hat", "face_decoration", "earPhone", "vest", "female_top", "watch", "glove", "female_bottom", "legwear", "female_shoes" };
         public Faction faction;
         public List<AiVoice> aiVoiceSets;
+        //public HumanBodyColor humanBodyColor;
     }
 }

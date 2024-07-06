@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.IntenseTPS.Scripts.Level;
 namespace Assets.IntenseTPS.Scripts.Common
 {
     public class HumanBodyColor : MonoBehaviour
@@ -9,21 +9,36 @@ namespace Assets.IntenseTPS.Scripts.Common
         public Color skinColor = Color.gray;
         public Color hairColor = Color.gray;
         public List<Renderer> hairRenderers;
-        public Texture customFace;
-        public Texture customEye;
-        public string mainColorName = "_MainColor";
+        [Space]
+        public bool needCelShading = false;
+        public List<Texture2D> hairTextures;
+        public List<Texture2D> hairNormals;
+        [Space]
+        public Texture2D customEye;
         [Range(0,100)]
         public float additionalVariable = 0f;
-        private MaterialPropertyBlock hairProp;
+
+        const string mainColorName = "_MainColor";
+        const string celShadingTexName = "_MainTex";
+        const string celShadingNormalName = "_NormalMap";
+        private bool init = false;
         public void StartUp()
         {
-            hairProp = new MaterialPropertyBlock();
-            hairProp.SetColor(mainColorName, hairColor);
+            if (init) return;
+            init = true;
             if (hairRenderers.Count != 0)
             {
-                foreach (var item in hairRenderers)
+                for (int i=0; i < hairRenderers.Count;i++)
                 {
-                    item.SetPropertyBlock(hairProp);
+                    var prop = new MaterialPropertyBlock();
+                    prop.SetColor(mainColorName, hairColor);
+                    if (needCelShading)
+                    {
+                        hairRenderers[i].material = LevelManager.GetCelShadingMat(3);
+                        prop.SetTexture(celShadingTexName, hairTextures[i]);
+                        prop.SetTexture(celShadingNormalName, hairNormals[i]);
+                    }
+                    hairRenderers[i].SetPropertyBlock(prop);
                 }
             }
         }

@@ -11,7 +11,6 @@ namespace Assets.IntenseTPS.Scripts.Common
         public List<SkinnedMeshRenderer> skinnedMeshRenderers;
         public List<HumanBody> humanBodys;
         public Renderer simplifiedModel;
-        public HumanBodyColor humanBodyColor;
         public string leftArmObj;
         public string rightArmObj;
         public Vector4 upperBodyMask;
@@ -35,18 +34,21 @@ namespace Assets.IntenseTPS.Scripts.Common
                     item.bones = _base.bones;
                 }
             }
-            if (humanBodyColor) humanBodyColor.StartUp();
             if (oldBones)
-            Destroy(oldBones);
+                Destroy(oldBones);
         }
         public void SetUpBody(HumanBodyColor humanBodyColor) 
         {
-            if (simplifiedModel)
+            if (humanBodyColor)
             {
-                MaterialPropertyBlock prop = new();
-                prop.SetColor("_SkinColor", humanBodyColor.skinColor);
-                prop.SetColor("_HairColor", humanBodyColor.hairColor);
-                simplifiedModel.SetPropertyBlock(prop);
+                humanBodyColor.StartUp();
+                if (simplifiedModel)
+                {
+                    MaterialPropertyBlock prop = new();
+                    prop.SetColor("_SkinColor", humanBodyColor.skinColor);
+                    prop.SetColor("_HairColor", humanBodyColor.hairColor);
+                    simplifiedModel.SetPropertyBlock(prop);
+                }
             }
             if (humanBodys.Count != 0)
             {
@@ -75,8 +77,8 @@ namespace Assets.IntenseTPS.Scripts.Common
                 foreach (var item in skinnedMeshRenderers)
                 {
                     if (_can)
-                        item.shadowCastingMode =UnityEngine.Rendering.ShadowCastingMode.On;
-                    else item.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                        item.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                    else { item.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; }
                 }
             }
         }
