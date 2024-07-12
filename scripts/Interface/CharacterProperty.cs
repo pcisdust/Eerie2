@@ -19,6 +19,7 @@ namespace Assets.IntenseTPS.Scripts.Common
         public string[] characterPartsTags = new string[] { "hat", "face_decoration", "earPhone", "vest", "female_top", "watch", "glove", "female_bottom", "legwear", "female_shoes" };
         public Faction faction;
         public List<AiVoice> aiVoiceSets;
-        //public HumanBodyColor humanBodyColor;
+        public AnimationClip idleAnimation;
+        public AnimationClip walkAnimation;
     }
 }

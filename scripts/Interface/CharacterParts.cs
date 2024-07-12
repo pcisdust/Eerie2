@@ -16,6 +16,8 @@ namespace Assets.IntenseTPS.Scripts.Common
         public Vector4 upperBodyMask;
         public Vector4 lowerBodyMask;
         public bool keepHeadSize = false;
+
+        [Header("pantyhose or stocking")]
         public bool changeMaterial = false;
         public string materialType = "";
         public Color color = Color.white;
