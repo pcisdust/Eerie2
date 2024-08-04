@@ -102,5 +102,9 @@ namespace Assets.IntenseTPS.Scripts.Level
         {
             return null;
         }
+        public static Color GetSkinColor(int _dark)
+        {
+            return Color.white;
+        }
     }
 }

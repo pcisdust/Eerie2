@@ -197,6 +197,7 @@ namespace Assets.IntenseTPS.Scripts.Level
         public List<string> levelActions;
         public int playerId = -1;
     }
+
     [Serializable]
     public class TransactionDB
     {
@@ -212,6 +213,27 @@ namespace Assets.IntenseTPS.Scripts.Level
         public List<int> priceIndex;
         public List<int> price;
     }
+
+    [Serializable]
+    public class ShopDB
+    {
+        public string currencyName;
+        public List<BuyInfo> buyPrice;
+        public List<ShopListDB> priceLists;
+    }
+    [Serializable]
+    public class ShopListDB
+    {
+        public string invFileName;
+        public string shopText;
+        public List<ShopPrice> priceList;
+    }
+    [Serializable]
+    public class ShopPrice
+    {
+        public int priceIndex;
+        public int price;
+    }
     [Serializable]
     public class BuyInfo
     {
@@ -219,6 +241,7 @@ namespace Assets.IntenseTPS.Scripts.Level
         public string itemCondition;
         public int itemPrice = 0;
     }
+
     [Serializable]
     public class PlayerEvent
     {

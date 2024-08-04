@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaterialChangerManager : MonoBehaviour
+namespace Assets.IntenseTPS.Scripts.Common
 {
-    public List<MaterialChanger> materialChangers;
-    public void ChangeMaterial(int _type)
+    public class MaterialChangerManager : MonoBehaviour
     {
-        if (materialChangers.Count != 0)
+        public List<MaterialChanger> materialChangers;
+        public void ChangeMaterial(int _type)
         {
-            foreach (var item in materialChangers)
+            if (materialChangers.Count != 0)
             {
-                if(item)
-                item.ChangeMaterial(_type);
+                foreach (var item in materialChangers)
+                {
+                    if (item)
+                        item.ChangeMaterial(_type);
+                }
             }
         }
     }

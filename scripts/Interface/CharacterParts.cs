@@ -47,7 +47,6 @@ namespace Assets.IntenseTPS.Scripts.Common
                 if (simplifiedModel)
                 {
                     MaterialPropertyBlock prop = new();
-                    prop.SetColor("_SkinColor", humanBodyColor.skinColor);
                     prop.SetColor("_HairColor", humanBodyColor.hairColor);
                     simplifiedModel.SetPropertyBlock(prop);
                 }

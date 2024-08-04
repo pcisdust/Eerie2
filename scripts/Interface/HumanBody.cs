@@ -46,14 +46,16 @@ namespace Assets.IntenseTPS.Scripts.Common
             Material[] materials = meshRenderer.sharedMaterials;
             if (faceIndex >= 0)
             {
+                MaterialPropertyBlock prop = new();
                 if (needCelShading)
                 {
                     materials[faceIndex] = LevelManager.GetCelShadingMat(0);
-                    MaterialPropertyBlock prop = new();
                     prop.SetTexture(celShadingTexName, faceTexture);
-                    prop.SetTexture(celShadingGlossName, faceGloss);
-                    meshRenderer.SetPropertyBlock(prop, faceIndex);
+                    if(faceGloss)
+                        prop.SetTexture(celShadingGlossName, faceGloss);
                 }
+                prop.SetColor(celShadingColorName, LevelManager.GetSkinColor(humanBodyColor.darkSkin));
+                meshRenderer.SetPropertyBlock(prop, faceIndex);
             }
             if (eyeBallIndex >= 0)
             {

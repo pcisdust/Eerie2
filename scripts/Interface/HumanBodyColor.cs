@@ -6,7 +6,8 @@ namespace Assets.IntenseTPS.Scripts.Common
 {
     public class HumanBodyColor : MonoBehaviour
     {
-        public Color skinColor = Color.gray;
+        [Range(0,5)]
+        public int darkSkin = 0;
         public Color hairColor = Color.gray;
         public List<Renderer> hairRenderers;
         [Space]
@@ -36,7 +37,8 @@ namespace Assets.IntenseTPS.Scripts.Common
                     {
                         hairRenderers[i].material = LevelManager.GetCelShadingMat(3);
                         prop.SetTexture(celShadingTexName, hairTextures[i]);
-                        prop.SetTexture(celShadingNormalName, hairNormals[i]);
+                        if(hairNormals[i])
+                            prop.SetTexture(celShadingNormalName, hairNormals[i]);
                     }
                     hairRenderers[i].SetPropertyBlock(prop);
                 }
